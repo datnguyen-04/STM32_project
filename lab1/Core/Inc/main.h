@@ -54,7 +54,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void init_exercise1();
+void exercise1_run();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
@@ -63,6 +64,8 @@ void Error_Handler(void);
 #define LED_YELLOW_Pin GPIO_PIN_6
 #define LED_YELLOW_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
+#define LED_ON 	1
+#define LED_OFF	0
 
 /* USER CODE END Private defines */
 
