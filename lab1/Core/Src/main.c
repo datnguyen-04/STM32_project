@@ -65,8 +65,12 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	int led_status = LED_OFF;
+	int counter = 0;
 
 	void init_exercise1(){
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin);
+		HAL_Delay(1000);
 
 	}
 	void led_on(){
@@ -81,14 +85,18 @@ int main(void)
 		switch(led_status){
 			case LED_ON:
 				led_on();
-				if(1){
+				counter++;
+				if(counter >= 2){
 					led_status = LED_OFF;
+					counter = 0;
 				}
 				break;
 			case LED_OFF:
 				led_off();
-				if(1){
+				counter++;
+				if(counter >= 2){
 					led_status = LED_ON;
+					counter = 0;
 				}
 				break;
 			default:
