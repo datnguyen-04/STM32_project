@@ -65,6 +65,60 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	//TO DO ex2
+	int led_status = RED_ON;
+	int counter = 0;
+
+	void init_exercise2() {
+		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
+		HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin);
+		HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
+		HAL_Delay(1000);
+	}
+	void red_on() {
+        HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
+        HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+        HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+	}
+	void yellow_on() {
+	        HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+	        HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_SET);
+	        HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_RESET);
+	}
+	void green_on() {
+	        HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_RESET);
+	        HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, GPIO_PIN_RESET);
+	        HAL_GPIO_WritePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin, GPIO_PIN_SET);
+	}
+	void exercise2_run() {
+		switch(led_status) {
+				  case RED_ON:
+					  red_on();
+					  counter++;
+					  if (counter >= 5) {
+						  led_status = YELLOW_ON;
+						  counter = 0;
+					  }
+					  break;
+				  case YELLOW_ON:
+					  yellow_on();
+					  counter++;
+					  if (counter >= 2) {
+						  led_status = GREEN_ON;
+						  counter = 0;
+					  }
+					  break;
+				  case GREEN_ON:
+					  green_on();
+					  counter++;
+					  if (counter >= 3) {
+						  led_status = RED_ON;
+						  counter = 0;
+					  }
+					  break;
+				  default:
+					  break;
+			  }
+	}
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -91,8 +145,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  init_exercise2();
   while (1)
   {
+	  HAL_GPIO_TogglePin(LED_BLINKY_GPIO_Port, LED_BLINKY_Pin);
+	  exercise2_run();
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
