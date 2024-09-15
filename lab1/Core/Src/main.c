@@ -65,15 +65,21 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	//TO DO ex6
+	unsigned int counter = 11;
+
 	void init_exercise6() {
-		unsigned int counter = 11;
 		while (counter >= 0) {
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << counter);
 			counter--;
-			HAL_Delay(1000);
+			HAL_Delay(500);
 		}
-		if (counter == 0) counter = 11;
 
+		if (counter < 0) counter = 11;
+
+	}
+
+	void clearAllClock() {
+		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, RESET);
 	}
   /* USER CODE END 1 */
 
@@ -96,18 +102,24 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, SET);
+  HAL_Delay(1000);
+  clearAllClock();
+  HAL_Delay(1000);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  init_exercise6();
   while (1)
   {
+	  //init_exercise6();
+
+
 
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
   }
   /* USER CODE END 3 */
 }
