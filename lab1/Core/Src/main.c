@@ -64,7 +64,7 @@ static void MX_GPIO_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	//TO DO ex2
+	//TO DO ex3
 	int led_status = RED_ON;
 	int counter = 0;
 
