@@ -81,6 +81,10 @@ int main(void)
 	void clearAllClock() {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, RESET);
 	}
+
+	void setNumberOnClock(int num) {
+		if (num >= 1 && num <= 12) HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << (num-1), SET);
+	}
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -102,10 +106,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, SET);
-  HAL_Delay(1000);
-  clearAllClock();
-  HAL_Delay(1000);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -119,7 +120,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
+	  clearAllClock();
+	  setNumberOnClock(counter);
+	  if (counter <= 0) counter = 12;
+	  else counter--;
+	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
