@@ -65,16 +65,16 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 	//TO DO ex6
-	unsigned int counter = 11;
+	unsigned int counter = 12;
 
 	void init_exercise6() {
 		while (counter >= 0) {
-			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << counter);
+			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << (counter-1));
 			counter--;
 			HAL_Delay(500);
 		}
 
-		if (counter < 0) counter = 11;
+		if (counter <= 0) counter = 12;
 
 	}
 
@@ -85,6 +85,11 @@ int main(void)
 	void setNumberOnClock(int num) {
 		if (num >= 1 && num <= 12) HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << (num-1), SET);
 	}
+
+	void clearNumberOnClock(int num) {
+			if (num >= 1 && num <= 12) HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << (num-1), RESET);
+	}
+
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -120,8 +125,10 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  clearAllClock();
+	  //clearAllClock();
 	  setNumberOnClock(counter);
+	  HAL_Delay(1000);
+	  clearNumberOnClock(counter);
 	  if (counter <= 0) counter = 12;
 	  else counter--;
 	  HAL_Delay(1000);
