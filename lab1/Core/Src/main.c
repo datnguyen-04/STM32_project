@@ -69,10 +69,6 @@ int main(void)
 	int counter = 0;
 
 	void init_exercise2() {
-		HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-		HAL_GPIO_TogglePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin);
-		HAL_GPIO_TogglePin(LED_GREEN_GPIO_Port, LED_GREEN_Pin);
-		HAL_Delay(1000);
 	}
 	void red_on() {
         HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, GPIO_PIN_SET);
@@ -95,7 +91,7 @@ int main(void)
 					  red_on();
 					  counter++;
 					  if (counter >= 5) {
-						  led_status = YELLOW_ON;
+						  led_status = GREEN_ON;
 						  counter = 0;
 					  }
 					  break;
@@ -103,7 +99,7 @@ int main(void)
 					  yellow_on();
 					  counter++;
 					  if (counter >= 2) {
-						  led_status = GREEN_ON;
+						  led_status = RED_ON;
 						  counter = 0;
 					  }
 					  break;
@@ -111,7 +107,7 @@ int main(void)
 					  green_on();
 					  counter++;
 					  if (counter >= 3) {
-						  led_status = RED_ON;
+						  led_status = YELLOW_ON;
 						  counter = 0;
 					  }
 					  break;
