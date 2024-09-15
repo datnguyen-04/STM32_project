@@ -61,12 +61,30 @@ void exercise2_run();
 /* Private defines -----------------------------------------------------------*/
 #define LED_BLINKY_Pin GPIO_PIN_5
 #define LED_BLINKY_GPIO_Port GPIOA
-#define LED_RED_Pin GPIO_PIN_0
-#define LED_RED_GPIO_Port GPIOB
-#define LED_YELLOW_Pin GPIO_PIN_1
-#define LED_YELLOW_GPIO_Port GPIOB
-#define LED_GREEN_Pin GPIO_PIN_2
-#define LED_GREEN_GPIO_Port GPIOB
+#define LED_RED_UP_Pin GPIO_PIN_0
+#define LED_RED_UP_GPIO_Port GPIOB
+#define LED_YELLOW_UP_Pin GPIO_PIN_1
+#define LED_YELLOW_UP_GPIO_Port GPIOB
+#define LED_GREEN_UP_Pin GPIO_PIN_2
+#define LED_GREEN_UP_GPIO_Port GPIOB
+#define LED_YELLOW_LEFT_Pin GPIO_PIN_10
+#define LED_YELLOW_LEFT_GPIO_Port GPIOB
+#define LED_GREEN_LEFT_Pin GPIO_PIN_11
+#define LED_GREEN_LEFT_GPIO_Port GPIOB
+#define LED_RED_RIGHT_Pin GPIO_PIN_3
+#define LED_RED_RIGHT_GPIO_Port GPIOB
+#define LED_YELLOW_RIGHT_Pin GPIO_PIN_4
+#define LED_YELLOW_RIGHT_GPIO_Port GPIOB
+#define LED_GREEN_RIGHT_Pin GPIO_PIN_5
+#define LED_GREEN_RIGHT_GPIO_Port GPIOB
+#define LED_RED_DOWN_Pin GPIO_PIN_6
+#define LED_RED_DOWN_GPIO_Port GPIOB
+#define LED_YELLOW_DOWN_Pin GPIO_PIN_7
+#define LED_YELLOW_DOWN_GPIO_Port GPIOB
+#define LED_GREEN_DOWN_Pin GPIO_PIN_8
+#define LED_GREEN_DOWN_GPIO_Port GPIOB
+#define LED_RED_LEFT_Pin GPIO_PIN_9
+#define LED_RED_LEFT_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 #define RED_ON	0
 #define YELLOW_ON	1
