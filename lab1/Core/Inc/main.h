@@ -58,6 +58,22 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define LED_BLINKY_Pin GPIO_PIN_5
+#define LED_BLINKY_GPIO_Port GPIOA
+#define SEG_a_Pin GPIO_PIN_7
+#define SEG_a_GPIO_Port GPIOA
+#define SEG_b_Pin GPIO_PIN_8
+#define SEG_b_GPIO_Port GPIOA
+#define SEG_c_Pin GPIO_PIN_9
+#define SEG_c_GPIO_Port GPIOA
+#define SEG_d_Pin GPIO_PIN_10
+#define SEG_d_GPIO_Port GPIOA
+#define SEG_e_Pin GPIO_PIN_11
+#define SEG_e_GPIO_Port GPIOA
+#define SEG_f_Pin GPIO_PIN_12
+#define SEG_f_GPIO_Port GPIOA
+#define SEG_g_Pin GPIO_PIN_13
+#define SEG_g_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
