@@ -66,17 +66,9 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	//TO DO ex6
 	unsigned int counter = 12;
-
-	void init_exercise6() {
-		while (counter >= 0) {
-			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << (counter-1));
-			counter--;
-			HAL_Delay(500);
-		}
-
-		if (counter <= 0) counter = 12;
-
-	}
+	int sec = 60;
+	int min = 60;
+	int hour = 11;
 
 	void clearAllClock() {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, RESET);
@@ -89,6 +81,42 @@ int main(void)
 	void clearNumberOnClock(int num) {
 			if (num >= 1 && num <= 12) HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0 << (num-1), RESET);
 	}
+
+	void display(int hour, int min, int sec) {
+		clearAllClock();
+		setNumberOnClock(sec/5);
+		setNumberOnClock(min/5);
+		setNumberOnClock(hour);
+	}
+
+	void exercise10_run() {
+		sec++;
+		if (sec >= 61) {
+			sec = 1;
+			min++;
+		}
+		if (min >= 61) {
+			min = 1;
+			hour++;
+		}
+		if (hour >= 13) {
+			hour = 1;
+		}
+		display(hour, min, sec);
+	}
+
+	void init_exercise6() {
+		while (counter >= 0) {
+			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << (counter-1));
+			counter--;
+			HAL_Delay(500);
+		}
+
+		if (counter <= 0) counter = 12;
+
+	}
+
+
 
   /* USER CODE END 1 */
 
@@ -118,6 +146,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  exercise10_run();
+	  HAL_Delay(500);
 	  //init_exercise6();
 
 
@@ -126,12 +156,12 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  //clearAllClock();
-	  setNumberOnClock(counter);
-	  HAL_Delay(1000);
-	  clearNumberOnClock(counter);
-	  if (counter <= 0) counter = 12;
-	  else counter--;
-	  HAL_Delay(1000);
+//	  setNumberOnClock(counter);
+//	  HAL_Delay(1000);
+//	  clearNumberOnClock(counter);
+//	  if (counter <= 0) counter = 12;
+//	  else counter--;
+//	  HAL_Delay(1000);
   }
   /* USER CODE END 3 */
 }
