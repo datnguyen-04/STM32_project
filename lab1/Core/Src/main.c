@@ -66,9 +66,9 @@ int main(void)
   /* USER CODE BEGIN 1 */
 	//TO DO ex6
 	unsigned int counter = 12;
-	int sec = 60;
-	int min = 60;
-	int hour = 11;
+	int sec = 0;
+	int min = 0;
+	int hour = 0;
 
 	void clearAllClock() {
 		HAL_GPIO_WritePin(GPIOB, GPIO_PIN_All, RESET);
@@ -84,23 +84,40 @@ int main(void)
 
 	void display(int hour, int min, int sec) {
 		clearAllClock();
-		setNumberOnClock(sec/5);
-		setNumberOnClock(min/5);
-		setNumberOnClock(hour);
+		if (sec/5 == 0) {
+			setNumberOnClock(12);
+		}
+		else {
+			setNumberOnClock(sec/5);
+		}
+
+		if (min/5 == 0) {
+			setNumberOnClock(12);
+		}
+		else {
+			setNumberOnClock(min/5);
+		}
+
+		if (hour == 0) {
+			setNumberOnClock(12);
+		}
+		else {
+			setNumberOnClock(hour);
+		}
 	}
 
 	void exercise10_run() {
 		sec++;
-		if (sec >= 61) {
-			sec = 1;
+		if (sec >= 60) {
+			sec = 0;
 			min++;
 		}
-		if (min >= 61) {
-			min = 1;
+		if (min >= 60) {
+			min = 0;
 			hour++;
 		}
-		if (hour >= 13) {
-			hour = 1;
+		if (hour >= 12) {
+			hour = 0;
 		}
 		display(hour, min, sec);
 	}
@@ -109,7 +126,7 @@ int main(void)
 		while (counter >= 0) {
 			HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0 << (counter-1));
 			counter--;
-			HAL_Delay(500);
+			HAL_Delay(1000);
 		}
 
 		if (counter <= 0) counter = 12;
@@ -147,7 +164,7 @@ int main(void)
   while (1)
   {
 	  exercise10_run();
-	  HAL_Delay(500);
+	  HAL_Delay(10);
 	  //init_exercise6();
 
 
